@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+LICENSE
+t/WWW-Webjay.t
+lib/WWW/Webjay.pm
+META.yml                                 Module meta-data (added by MakeMaker)

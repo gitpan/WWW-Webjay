@@ -1,0 +1,147 @@
+NET-WebJay version 0.1.0
+========================
+
+NAME
+    NET::WebJay - Perl extension for the WebJay API v0.0 (Draft June 2,
+    2004)
+
+SYNOPSIS
+      use NET::WebJay;
+      blah blah blah
+
+DESCRIPTION
+    The WebJay module is currently at the stage where one can call the
+    functions to get bypass most of the user agent setup, which was the
+    point. The module has several methods to mirror the API's declaration:
+
+METHODS
+  create_playlist
+    If the URI of the playlist is not set, and there is a title in the GET
+    arguments, create a playlist by that title and return the short-name.
+
+   Arguments
+    title: text [MAX LENGTH 255] [REQUIRED] public: public OR private
+    [default: public] [REQUIRED] description: text [MAX LENGTH 255]
+    [OPTIONAL] m3u: Newline separated list of URLs of playlist entries [MAX
+    LENGTH 40K] [OPTIONAL]
+
+   Returns
+    201 on success 4xx on failure 5xx on failure
+
+  modify_playlist
+    POST to the API URL (for example:
+    http://webjay.org/api/by/yourname/short-name) of the playlist that you
+    want to change.
+
+   Arguments
+    shortname: Short-name of the playlist title: text [MAX LENGTH 255]
+    public: public OR private [MAX LENGTH 255] description: text [MAX LENGTH
+    255] m3u: Newline-separated list of URLs of playlist entries [MAX LENGTH
+    40K]
+
+   Returns
+    200 on success
+    4xx on failure
+    5xx on failure
+
+  delete_playlist
+    To delete a playlist, use the HTTP DELETE method on the playlist URI.
+    Please be careful. You will not be prompted, and once a playlist is
+    deleted it is not recoverable.
+
+   Arguments
+    shortname: Short-name of the playlist.
+
+   Returns
+    200 on success
+    4xx on failure
+    5xx on failure
+
+  fetch_playlist
+    Get the actual content of a playlist.
+
+  Arguments
+    shortname: Short-name of the playlist.
+
+  Returns
+    A full playlist in XPSF.
+
+  modify_metadata
+    Update metadata related to a playlist entry, using the URL of the entry
+    as a key.
+
+    Metadata for an audio URL applies to all instances of that URL within
+    your playlists. If you do not set a value for the image, description, or
+    site parameter, a blank value will be used.
+
+   Arguments
+    song: [URL of an audio resource in one of your playlists] [REQUIRED]
+    description: text [MAX LENGTH 255] [REQUIRED]
+    image: URL of a GIF [MAX LENGTH 255] [REQUIRED]
+    site: URL related to audio resource [MAX LENGTH 255] [REQUIRED]
+
+   Returns
+    200 on success
+    4xx on failure
+    5xx on failure
+
+  list_playlists
+    Fetch a listing of user playlists.
+
+   Returns
+    An array of playlist short-names.
+
+  get_shortname
+    Given a playlist title, fetch the short-name.
+
+   Arguments
+    title: entity-encoded string [MAX LENGTH 255]
+
+   Returns
+    A short-name.
+
+  EXPORT
+    None by default.
+
+BUGS AND CAVEATS
+    This is alpha code. Lots of things aren't implemented yet.
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+DEPENDENCIES
+
+This module requires these other modules and libraries:
+	Carp, HTTP::Cookies, LWP::UserAgent, Exporter
+
+SEE ALSO
+
+WebJay (http://webjay.org/)
+WebJay Perl Sample (http://webjay.org/public/webjay_sample)
+WebJay API (http://webjay.org/api/help)
+XPSF Draft 8 (http://gonze.com/xspf/xspf-draft-8.html)
+
+COPYRIGHT AND LICENCE
+
+Copyright (C) 2004 by Adam P. Blinkinsop
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+

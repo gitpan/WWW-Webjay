@@ -1,0 +1,10 @@
+Revision history for Perl extension NET::WebJay.
+
+0.01  Fri Oct 29 09:13:18 2004
+	- original version; created by h2xs 1.23 with options
+		-AX -n NET::WebJay
+
+0.1.0 Fri Oct 29 09:30:00 2004
+	- added code for the Webjay API v0.0 (Draft June 2, 2004)
+	- added POD in the module file
+	- updated h2xs information
