@@ -11,7 +11,7 @@ use HTTP::Cookies;
 use LWP::UserAgent;
 use URI::Escape;
 
-our $VERSION = '0.1_0';
+our $VERSION = '0.1_1';
 our $VERSION = eval $VERSION;
 
 # For creation of a new Webjay object.
@@ -336,53 +336,55 @@ If the URI of the playlist is not set, and there is a title in the GET arguments
 
 =head3 Arguments
 
-title: text [MAX LENGTH 255] [REQUIRED]
-public: public OR private [default: public] [REQUIRED]
-description: text [MAX LENGTH 255] [OPTIONAL]
-m3u: Newline separated list of URLs of playlist entries [MAX LENGTH 40K] [OPTIONAL]
+title: text [MAX LENGTH 255] [REQUIRED]<br />
+public: public OR private [default: public] [REQUIRED]<br />
+description: text [MAX LENGTH 255] [OPTIONAL]<br />
+m3u: Newline separated list of URLs of playlist entries [MAX LENGTH 40K] [OPTIONAL]<br />
 
 =head3 Returns
 
-201 on success
-4xx on failure
-5xx on failure
+201 on success<br />
+4xx on failure<br />
+5xx on failure<br />
 
 =head2 modify_playlist
 
-POST to the API URL (for example: http://webjay.org/api/by/yourname/short-name) of the playlist that you want to change.
+POST to the API URL (for example: http://webjay.org/api/by/yourname/short-name) of the playlist that you want to change.<br />
 
 =head3 Arguments
 
-shortname: Short-name of the playlist
-title: text [MAX LENGTH 255]
-public: public OR private [MAX LENGTH 255]
-description: text [MAX LENGTH 255]
-m3u: Newline-separated list of URLs of playlist entries [MAX LENGTH 40K]
+shortname: Short-name of the playlist<br />
+title: text [MAX LENGTH 255]<br />
+public: public OR private [MAX LENGTH 255]<br />
+description: text [MAX LENGTH 255]<br />
+m3u: Newline-separated list of URLs of playlist entries [MAX LENGTH 40K]<br />
 
 =head3 Returns
-200 on success
-4xx on failure
-5xx on failure
+
+200 on success<br />
+4xx on failure<br />
+5xx on failure<br />
 
 =head2 delete_playlist
 
-To delete a playlist, use the HTTP DELETE method on the playlist URI.
-Please be careful.
-You will not be prompted, and once a playlist is deleted it is not recoverable.
+To delete a playlist, use the HTTP DELETE method on the playlist URI.<br />
+Please be careful.<br />
+You will not be prompted, and once a playlist is deleted it is not recoverable.<br />
 
 =head3 Arguments
 
 shortname: Short-name of the playlist.
 
 =head3 Returns
-200 on success
-4xx on failure
-5xx on failure
+
+200 on success<br />
+4xx on failure<br />
+5xx on failure<br />
 
 =head2 fetch_playlist
 
 Get the actual content of a playlist.
- 
+
 =head2 Arguments
 
 shortname: Short-name of the playlist.
@@ -393,27 +395,30 @@ A full playlist in XPSF.
 
 =head2 modify_metadata
 
-Update metadata related to a playlist entry, using the URL of the entry as a key.
-
-Metadata for an audio URL applies to all instances of that URL within your playlists.
-If you do not set a value for the image, description, or site parameter, a blank value will be used.
+Update metadata related to a playlist entry, using the URL of the entry as a key.<br />
+<br />
+Metadata for an audio URL applies to all instances of that URL within your playlists.<br />
+If you do not set a value for the image, description, or site parameter, a blank value will be used.<br />
 
 =head3 Arguments
-song: [URL of an audio resource in one of your playlists] [REQUIRED]
-description: text [MAX LENGTH 255] [REQUIRED]
-image: URL of a GIF [MAX LENGTH 255] [REQUIRED]
-site: URL related to audio resource [MAX LENGTH 255] [REQUIRED]
+
+song: [URL of an audio resource in one of your playlists] [REQUIRED]<br />
+description: text [MAX LENGTH 255] [REQUIRED]<br />
+image: URL of a GIF [MAX LENGTH 255] [REQUIRED]<br />
+site: URL related to audio resource [MAX LENGTH 255] [REQUIRED]<br />
 
 =head3 Returns
-200 on success
-4xx on failure
-5xx on failure
+
+200 on success<br />
+4xx on failure<br />
+5xx on failure<br />
 
 =head2 list_playlists
 
 Fetch a listing of user playlists.
 
 =head3 Returns
+
 An array of playlist short-names.
 
 =head2 get_shortname
